@@ -30,6 +30,10 @@ export const messageBoard = asyncHandler(async (req, res, next) => {
 })
 
 export const messageCreateGet = asyncHandler(async (req, res, next) => {
+	if (!req.user) {
+		return sendErrorPage(res, 'You must be signed in to post a message', 401, 'Not signed in')
+	}
+
 	res.render('message_form', {
 		title: 'Compose a new message',
 		errorMessage: 'Unable to post the message.',
@@ -83,7 +87,10 @@ function middlewareWithHandler (handler) {
 			}
 			// CREATE NEW MESSAGE
 			else {
-			// Construct message from form body and save
+				if (!req.user) {
+					return sendErrorPage(res, 'You must be signed in to post a message', 401, 'Not signed in')
+				}
+				// Construct message from form body and save
 				await new Message({
 					title: req.body.title,
 					text: req.body.text,

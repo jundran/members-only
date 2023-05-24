@@ -7,7 +7,7 @@ https://members-only-gip4.onrender.com
 TOP - Members Only project
 
 <p>
-	This is a message board app developed with Express and PassportJS, serving EJS templates. It has minimal styling and isn't much fun but its purpose is to demonstrate how to authenticate users and manage their abilities depending on if they are logged in or on the status of their account.
+	This is a message board app developed with Express, MongoDB and PassportJS, serving EJS templates. It has minimal styling and isn't much fun but its purpose is to demonstrate how to authenticate users and manage their abilities depending on if they are logged in or on the status of their account.
 </p>
 <p>
 	Users can be regular or premium members. Users <em>without an account</em> (or not signed in) can see messages but cannot see who has posted them or when they were posted.
