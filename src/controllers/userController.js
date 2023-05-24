@@ -1,7 +1,6 @@
 import asyncHandler from '../asyncHandler.js'
 import { addErrorsToRequestObject, sendErrorPage } from '../utils.js'
 import {
-	getUserOrFormBody,
 	validateFields,
 	validatePassword,
 	validateMembershipCode,
@@ -31,12 +30,19 @@ export const userCreateGet = asyncHandler(async (req, res, next) => {
 export const userUpdateGet = asyncHandler(async (req, res, next) => {
 	if (!req.user) return sendErrorPage(res, 'User not found', 404)
 
+	const localsUser = Object.keys(req.body).length > 0 ? req.body :
+		{
+			...req.user._doc,
+			password: '',
+			passwordConfirm: ''
+		}
+
 	res.render('user_form', {
 		title: 'Update user profile',
 		errorMessage: 'Unable to create an account.',
 		errors: req.errors || [],
 		passwordPlaceholder: 'Leave blank to keep existing password',
-		userDoc: getUserOrFormBody(req, res)
+		userDoc: localsUser
 	})
 })
 

@@ -2,19 +2,6 @@ import bcrypt from 'bcrypt'
 import { body } from 'express-validator'
 import User from '../models/user.js'
 import { userCreateGet } from './userController.js'
-import { sendErrorPage } from '../utils.js'
-
-export function getUserOrFormBody (req, res) {
-	// Form is already populated with existing fields so return form body
-	if (Object.keys(req.body).length > 0) return req.body
-
-	if (!req.user) sendErrorPage(res, 'User not found', 404)
-	return {
-		...req.user._doc,
-		password: '',
-		passwordConfirm: ''
-	}
-}
 
 export const validateFields = [
 	body('firstname', 'First name must not be empty.').trim().isLength({ min: 1 }),
