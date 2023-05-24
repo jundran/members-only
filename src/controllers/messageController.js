@@ -51,11 +51,12 @@ export const messageUpdateGet = asyncHandler(async (req, res, next) => {
 	if (!message) return sendErrorPage(res, 'Message not found', 404)
 	if (isNotAuthorized(req, res, message)) return
 
+	const localsMessage = Object.keys(req.body).length > 0 ? req.body : message
 	res.render('message_form', {
 		title: 'Edit message',
 		errorMessage: 'Unable to post the message.',
 		errors: req.errors || [],
-		message: await getMessageOrFormBody(req, res)
+		message: localsMessage
 	})
 })
 
@@ -119,15 +120,6 @@ export const messageDeletePost = asyncHandler(async (req, res, next) => {
 
 	res.redirect('/message/board')
 })
-
-async function getMessageOrFormBody (req, res) {
-	// Form is already populated with existing fields so return form body
-	if (Object.keys(req.body).length > 0) return req.body
-
-	const message = await Message.findById(req.params.id).exec()
-	if (!message) sendErrorPage(res, 'Message not found', 404)
-	return message
-}
 
 function isNotAuthorized (req, res, message) {
 	if (!req.user || (!req.user.isAdmin && message.user.id !== req.user.id)) {
