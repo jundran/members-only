@@ -1,0 +1,138 @@
+h1 {
+  text-align: center;
+  margin-bottom: 48px; }
+
+button {
+  cursor: pointer; }
+
+a {
+  color: currentColor; }
+
+label {
+  font-weight: 600; }
+
+textarea, input {
+  width: 100%;
+  box-sizing: border-box; }
+
+em {
+  color: navy;
+  font-weight: 600;
+  font-style: normal; }
+
+body {
+  font-family: sans-serif;
+  margin: 0; }
+
+header {
+  padding: 20px;
+  background: royalblue;
+  color: #fff; }
+  header ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+    list-style: none; }
+  header a {
+    width: max-content; }
+
+main {
+  margin: 0 auto 64px auto;
+  max-width: 800px;
+  padding: 16px; }
+
+.columns {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px; }
+  .columns img {
+    height: 48px;
+    width: 48px;
+    object-fit: cover; }
+
+.m0 {
+  margin: 0; }
+
+.p0 {
+  padding: 0; }
+
+@media (max-width: 600px) {
+  .columns {
+    grid-template-columns: 1fr !important;
+    gap: 4px; } }
+
+.errors-box {
+  padding: 16px;
+  border: 2px dashed #f00;
+  border-radius: 2px;
+  margin-bottom: 20px; }
+
+.button-link {
+  display: inline-block;
+  border: 2px dotted royalblue;
+  padding: 10px;
+  background: none; }
+  .button-link + .button-link {
+    margin-left: 32px; }
+  .button-link.edit {
+    border-color: #fb0; }
+  .button-link.delete {
+    border-color: #f00; }
+  .button-link:hover {
+    border-style: solid;
+    color: currentColor; }
+
+.message_form li {
+  grid-template-columns: 100px 1fr; }
+
+.message {
+  border: 1px solid #999;
+  border-radius: 8px;
+  box-shadow: 1px 3px 5px #999;
+  padding: 16px 32px;
+  margin-bottom: 32px; }
+  .message p {
+    margin: 0; }
+  .message .subject {
+    font-size: 1.2rem;
+    font-weight: 600; }
+  .message .text {
+    padding: 16px 0; }
+    .message .text.border {
+      border-bottom: 1px solid teal; }
+  .message .footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    font-size: .8rem;
+    padding-top: 8px; }
+    .message .footer span {
+      font-weight: 600; }
+    .message .footer .date {
+      min-width: fit-content; }
+  .message .actions {
+    margin-top: 16px; }
+
+.profile {
+  border: 2px solid royalblue;
+  padding: 16px; }
+
+.simple-link, header a, .button-link {
+  text-decoration: none;
+  font-weight: 600;
+  color: inherit; }
+  .simple-link:hover, header a:hover, .button-link:hover {
+    opacity: .8; }
+
+.simple-list, form ul {
+  padding: 0;
+  margin: 0;
+  list-style: none; }
+
+.spacing {
+  line-height: 1.2; }

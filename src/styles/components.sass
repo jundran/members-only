@@ -1,0 +1,56 @@
+.errors-box
+	padding: 16px
+	border: 2px dashed #f00
+	border-radius: 2px
+	margin-bottom: 20px
+
+.button-link
+	display: inline-block
+	border: 2px dotted royalblue
+	padding: 10px
+	@extend .simple-link
+	background: none
+	& + .button-link
+		margin-left: 32px
+	&.edit
+		border-color: #fb0
+	&.delete
+		border-color: #f00
+	&:hover
+		border-style: solid
+		color: currentColor
+
+.message_form li
+	grid-template-columns: 100px 1fr
+
+.message
+	p
+		margin: 0
+	border: 1px solid #999
+	border-radius: 8px
+	box-shadow: 1px 3px 5px #999
+	padding: 16px 32px
+	margin-bottom: 32px
+	.subject
+		font-size: 1.2rem
+		font-weight: 600
+	.text
+		padding: 16px 0
+		&.border
+			border-bottom: 1px solid teal
+	.footer
+		display: flex
+		justify-content: space-between
+		gap: 8px
+		font-size: .8rem
+		padding-top: 8px
+		span
+			font-weight: 600
+		.date
+			min-width: fit-content
+	.actions
+		margin-top: 16px
+
+.profile
+	border: 2px solid royalblue
+	padding: 16px

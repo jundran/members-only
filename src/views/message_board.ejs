@@ -1,0 +1,29 @@
+<%- include('includes/meta-header') -%>
+<main>
+	<div class="messageboard">
+		<h1>Message Board</h1>
+		<ul class="simple-list">
+			<% for(const message of messages) { %>
+				<li><%- include('includes/message', { message }) -%></li>
+			<% } %>
+		</ul>
+		<% if (!messages.length) { %>
+			<p>There are no messages</p>
+		<% } %>
+	</div>
+	<% if (user) {%>
+		<a class="button-link" href="/message/create">Post a message</a>
+	<% } else { %>
+		<p>
+			<a href="/login">Login </a> or
+			<a href="/signup">sign up </a> to be able to post messages.
+		</p>
+	<% } %>
+</main>
+<script>
+	const options = { month: "long", day: "numeric", hour: "numeric", minute: "numeric" }
+	document.querySelectorAll('.footer .date').forEach(date => {
+		date.textContent = new Date(date.textContent).toLocaleTimeString(undefined, options)
+	})
+</script>
+<%- include('includes/meta-footer') -%>

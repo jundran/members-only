@@ -1,0 +1,18 @@
+<div class="message">
+	<p class="subject"><%= message.title %></p>
+	<p class="<%= message.showInfo ? 'text border' : 'text' %>">
+		<%= message.text %>
+	</p>
+	<% if (message.showInfo) { %>
+		<div class='footer'>
+			<p class="user">by <span><%= message.user.fullname %></span></p>
+			<p class='date'><%= message.createdAt %></p>
+		</div>
+	<% } %>
+	<% if (message.hasAdmin) { %>
+		<div class="actions">
+			<a class="button-link delete" href="<%= `/message/${message.id}/delete` %>">Delete</a>
+			<a class="button-link edit" href="<%= `/message/${message.id}/update` %>">Edit</a>
+		</div>
+	<% } %>
+</div>

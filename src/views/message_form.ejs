@@ -1,0 +1,19 @@
+<%- include('includes/meta-header') -%>
+<main class="message_form">
+	<h1><%= title %></h1>
+	<%- include('includes/error-box') -%>
+	<form action="" method="POST">
+		<ul>
+			<li class="columns">
+				<label for="title">Title</label>
+				<input value="<%= message.title %>" name="title">
+			</li>
+			<li class="columns">
+				<label for="text">Message</label>
+				<textarea name="text" rows="20"><%= message.text %></textarea>
+			</li>
+		</ul>
+		<button class="button-link">Post</button>
+	</form>
+</main>
+<%- include('includes/meta-footer') -%>

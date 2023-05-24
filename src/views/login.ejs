@@ -1,0 +1,21 @@
+<%- include('includes/meta-header') -%>
+<main>
+	<h1>Log In</h1>
+	<%- include('includes/error-box') -%>
+	<form action="" method="POST">
+		<ul>
+			<li class='columns'>
+					<label for="email">Email</label>
+					<input name="email" value="<%= email %>" type="email"/>
+				</li>
+				<li class='columns'>
+					<label for="password">Password</label>
+					<input name="password" value="<%= password %>" type="password"/>
+				</li>
+		</ul>
+		<button>Log In</button>
+	</form>
+	<br>
+	<p>Create a <a href="/signup">new account </a>instead</p>
+</main>
+<%- include('includes/meta-footer') -%>

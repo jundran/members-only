@@ -1,0 +1,33 @@
+<%- include('includes/meta-header') -%>
+<main>
+	<h1>Members Only</h1>
+	<p class="spacing">
+		This is a message board app developed with Express and PassportJS, serving EJS templates. It has minimal styling and isn't much fun but its purpose is to demonstrate how to authenticate users and manage their abilities depending on if they are logged in or on the status of their account.
+	</p>
+	<p class="spacing">
+		Users can be regular or premium members. Users <em>without an account</em> (or not signed in) can see messages but cannot see who has posted them or when they were posted.
+	</p>
+	<p class="spacing">
+		<em>Regular</em> members can post messages and delete their own messages but can only see the name and date for their own posts.
+	</p>
+	<p class="spacing">
+		<em>Premium</em> users can do everything that regular members can but also see who authored the post and when it was posted.
+	</p>
+	<p class="spacing">
+		An <em>admin</em> account can be made (with a secret passcode) that has full access and can delete any post.
+	</p>
+	<p class="spacing"><strong>
+		For testing, to create a premium account, use the code <em>"premium"</em> or for an admin account use the code <em>"admin"</em> when creating an account.
+	</strong></p>
+	<% if (user) { %>
+		<div class="profile">
+			<p>You are signed in as <em><%= user.fullname %></em></p>
+			<p>Membership status: <em><%= user.membershipStatus %></em></p>
+			<p>Admin account: <em><%= user.isAdmin ? 'Yes' : 'No'%></em></p>
+			<p><i>Click the button below to update your profile or membership tier:</i></p>
+			<a class="button-link" href="/user/update">Update Profile</a>
+		</div>
+	<% } %>
+	<p><a href="/message/board">View the message board</a></p>
+</main>
+<%- include('includes/meta-footer') -%>

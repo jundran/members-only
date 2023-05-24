@@ -1,0 +1,56 @@
+<%- include('includes/meta-header') -%>
+<main>
+	<h1><%= title %></h1>
+	<%- include('includes/error-box') -%>
+	<% const user = userDoc %>
+	<form action="" method="POST">
+		<ul>
+			<li class='columns'>
+				<label for="firstname">First Name</label>
+				<input value="<%= user.firstname %>" name="firstname" />
+			</li>
+			<li class='columns'>
+				<label for="surname">Surname</label>
+				<input value="<%= user.surname %>" name="surname" />
+			</li>
+			<li class='columns'>
+				<label for="email">Email</label>
+				<input value="<%= user.email %>" name="email" type="email" />
+			</li>
+			<li class='columns'>
+					<label for="password">Password</label>
+					<input
+						value="<%= user.password %>" name="password"
+						type="password" placeholder="<%= passwordPlaceholder %>"
+					/>
+			</li>
+			<li class='columns'>
+				<label for="password-confirm">Password Confirm</label>
+				<input
+					value="<%= user.passwordConfirm %>" name="passwordConfirm"
+					type="password" placeholder="<%= passwordPlaceholder %>"
+				/>
+			</li>
+			<li class='columns'>
+				<label for="membershipCode">Membership code</label>
+				<input
+					value="<%= user.membershipCode %>" name="membershipCode"
+					placeholder="If you have one"
+				/>
+			</li>
+			<li class='columns'>
+				<label for="adminPassword">Admin Password</label>
+				<input
+					value="<%= user.adminPassword %>" name="adminPassword"
+					placeholder="If you have one"
+				/>
+			</li>
+		</ul>
+		<button><%= title.match(/create/i) ? 'Sign up' : 'Update' %></button>
+	</form>
+	<% if (!locals.user) { %>
+		<br>
+		<p><a href="/login">Log in </a>instead</p>
+	<% } %>
+</main>
+<%- include('includes/meta-footer') -%>

@@ -1,0 +1,12 @@
+<% if (errors.length) {%>
+	<div class="errors-box">
+		<p><strong>
+			<%= errorMessage + ' Please correct the following errors and try again:' %>
+		</strong></p>
+		<ul>
+			<% for (const error of errors) { %>
+				<li><%= error %></li>
+			<% } %>
+		</ul>
+	</div>
+<% } %>
