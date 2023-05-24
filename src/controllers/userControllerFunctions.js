@@ -46,8 +46,6 @@ export function validateMembershipCode (req, res, next) {
 			if (!req.errors) req.errors = []
 			req.errors.push('Membership code is not valid. Please try another code or submit the form without one.')
 		}
-	} else {
-		req.membershipStatus = req.user ? req.user.membershipStatus : 'Regular'
 	}
 	next()
 }
@@ -61,23 +59,21 @@ export function validateAdminCode (req, res, next) {
 			if (!req.errors) req.errors = []
 			req.errors.push('Admin password is not correct. Please try another password or submit the form without one.')
 		}
-	} else {
-		req.isAdmin = req.user ? req.user.isAdmin : false
 	}
 	next()
 }
 
 export async function saveDocument (req, res, next) {
-	const user = new User({
+	const user = {
 		firstname: req.body.firstname,
 		surname: req.body.surname,
-		email: req.body.email,
-		membershipStatus: req.membershipStatus,
-		isAdmin: req.isAdmin
-	})
+		email: req.body.email
+	}
 	if (req.body.password) {
 		user.password = await bcrypt.hash(req.body.password, 10)
 	}
+	if (req.membershipStatus) user.membershipStatus = req.membershipStatus
+	if (req.isAdmin) user.isAdmin = req.isAdmin
 
 	if (req.user) {
 		user._id = req.user._id
