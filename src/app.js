@@ -32,7 +32,6 @@ app.use(passport.session())
 
 // DEVELOPMENT ONLY - automatically login a user
 app.use(asyncHandler(async (req, res, next) => {
-	console.log(process.env)
 	if (process.env.GET_USER) req.user = await User.findOne().exec()
 	next()
 }))

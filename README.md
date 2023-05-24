@@ -1,7 +1,7 @@
 # members-only
 
 ## Live
-https://members-only-ml9n.onrender.com/
+https://members-only-gip4.onrender.com
 
 ## Description
 TOP - Members Only project

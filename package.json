@@ -1,5 +1,5 @@
 {
-	"name": "inventory-application",
+	"name": "members-only",
 	"type": "module",
 	"scripts": {
 		"start": "NODE_ENV=production node src/server.js",
