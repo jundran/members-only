@@ -81,8 +81,8 @@ export async function saveDocument (req, res, next) {
 			.then(() => res.redirect('/'))
 			.catch(err => handleErrorOnSave(err, req, res, next))
 	} else {
-		user.save()
-			.then(() => loginAndRedirect(req, res, next, user))
+		new User(user).save()
+			.then(newUser => loginAndRedirect(req, res, next, newUser))
 			.catch(err => handleErrorOnSave(err, req, res, next))
 	}
 }
