@@ -30,6 +30,6 @@ export const logout = (req, res, next) => {
 }
 
 export function handleAlreadySignedInUser (req, res, next) {
-	if (req.user) return sendErrorPage(res, 'You are already signed in', 200)
+	if (req.user) return sendErrorPage(res, 'You are already signed in', 200, 'Logged in')
 	next()
 }

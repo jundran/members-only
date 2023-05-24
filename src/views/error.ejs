@@ -1,4 +1,6 @@
-<%- include('includes/meta-header', { title: 'Not found' }) -%>
+<%- include('includes/meta-header', {
+	title: locals.title || 'Not found'
+}) -%>
 <main class="message_create">
 	<h1><%= message %></h1>
 </main>

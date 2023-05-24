@@ -1,8 +1,8 @@
 import { validationResult } from 'express-validator'
 
-export async function sendErrorPage (res, message, statusCode) {
+export async function sendErrorPage (res, message, statusCode, title) {
 	res.statusCode = statusCode
-	res.render('error', { message })
+	res.render('error', { message, title })
 }
 
 export function addErrorsToRequestObject (req, next) {
