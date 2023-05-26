@@ -122,8 +122,12 @@ export const messageDeletePost = asyncHandler(async (req, res, next) => {
 })
 
 function isNotAuthorized (req, res, message) {
-	if (!req.user || (!req.user.isAdmin && message.user.id !== req.user.id)) {
-		sendErrorPage(res, 'This message does not belong to you', 401)
+	if (!req.user) {
+		sendErrorPage(res, 'You are not signed in', 401, 'Not signed in')
+	}
+
+	if (!req.user.isAdmin && message.user.id !== req.user.id) {
+		sendErrorPage(res, 'This message does not belong to you', 403, 'Forbidden')
 		return true
 	}
 }
